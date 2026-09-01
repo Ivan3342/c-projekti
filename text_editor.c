@@ -3,9 +3,10 @@
 
 
 void writef(FILE *f) {
-    char buf[1024] = "Text\n";
+    char buf[1024];
     f = fopen("text.txt", "a+");
     printf("Enter the text you want to write:\n");
+    scanf("%s", &buf);
     fputs(buf, f);
     printf("Writing complete.\n");
     fclose(f);
