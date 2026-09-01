@@ -1,27 +1,28 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+#define BUFFER_SIZE 1024
 
 void writef(FILE *f) {
-    char buf[1024];
+    char buffer[BUFFER_SIZE];
     f = fopen("text.txt", "a+");
-    printf("Enter the text you want to write:\n");
-    scanf("%s", &buf);
-    fputs(buf, f);
+    printf("Enter the text you want to write: ");
+    scanf("%s", &buffer);
+    fprintf(f,"%s", buffer);
     printf("Writing complete.\n");
     fclose(f);
 }
 
 void readf(FILE *f) {
     f = fopen("text.txt", "r");
-    char buf[255];
+    char buffer[BUFFER_SIZE];
     if(f == NULL) {
         printf("Error opening a file.\n");
     }
     else {
-        while(fgets(buf, 255, f) != NULL) {
-            fgets(buf, 255, f);
-            printf("%s", &buf);
+        while(fgets(buffer, BUFFER_SIZE, f) != NULL) {
+            fgets(buffer, BUFFER_SIZE, f);
+            printf("%s", &buffer);
         }
     }
     fclose(f);
