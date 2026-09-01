@@ -3,22 +3,27 @@
 
 
 void writef(FILE *f) {
-
-    char buf[1024];
-
+    char buf[1024] = "Text\n";
     f = fopen("text.txt", "a+");
     printf("Enter the text you want to write:\n");
-
-    fgets(buf, sizeof(buf), stdin);
-    printf("%s",  buf);
     fputs(buf, f);
     printf("Writing complete.\n");
-
     fclose(f);
 }
 
 void readf(FILE *f) {
-    return 0;
+    f = fopen("text.txt", "r");
+    char buf[255];
+    if(f == NULL) {
+        printf("Error opening a file.\n");
+    }
+    else {
+        while(fgets(buf, 255, f) != NULL) {
+            fgets(buf, 255, f);
+            printf("%s", &buf);
+        }
+    }
+    fclose(f);
 }
 
 int main() {
@@ -28,11 +33,11 @@ int main() {
     int inp;
 
     while(1) {
-        printf("\nEnter the action ID:\n");
+        printf("Enter the action ID:\n");
         printf("ID | Name  | Description\n");
         printf(" 1 | Write | Write into a file\n");
         printf(" 2 | Read  | Prints the contents of a selected file\n");
-        printf("-1 | Close | Closes the program\n");
+        printf("-1 | Close | Closes the program\n\n");
         scanf("%d", &inp);
 
         switch(inp) {
@@ -51,8 +56,6 @@ int main() {
                 break;
         }
     }
-
-    writef(f);
 
     return 0;
 }
