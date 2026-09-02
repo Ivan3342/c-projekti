@@ -29,7 +29,6 @@ void readf(FILE *f) {
     }
     else {
         while(fgets(buffer, BUFFER_SIZE, f) != NULL) {
-            fgets(buffer, BUFFER_SIZE, f);
             printf("%s", &buffer);
         }
         fclose(f);
