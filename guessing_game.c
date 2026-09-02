@@ -9,8 +9,6 @@ int main()  {
     srand(time(0));
     int number = rand()%100;
     
-    printf("Debug: %d\n", number);
-
     do {
         printf("Enter a number: ");
         scanf("%d", &guess);
