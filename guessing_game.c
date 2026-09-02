@@ -9,7 +9,7 @@ int main()  {
     srand(time(0));
     int number = rand()%100;
     
-    printf("Debug: %d", number);
+    printf("Debug: %d\n", number);
 
     do {
         printf("Enter a number: ");
@@ -28,8 +28,14 @@ int main()  {
         }
 
         guess_number--;
+
+        printf("You have %d tries left.\n", guess_number);
     }
     while (guess_number > 0);
+    
+    if(guess_number <= 0) {
+        printf("You did not guess the number. Better luck next time\n");
+    }
 
     return 0;
 }
